@@ -62,4 +62,37 @@ Data Transformation
 * Use dplyr package to group merged data by subject, activity description and summarize mean on the rest of the columns
 * Write the output to tidydata.txt
 
+Final Output Description
+==============================
+
+* subject: Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30.
+* actdescr: activity description
+(WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING)
+* actid: activity id
+(1, 2, 3, 4, 5, 6)
+* features vector
+(feature vector for each pattern:  
+'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
+
+tBodyAcc-XYZ
+tGravityAcc-XYZ
+tBodyAccJerk-XYZ
+tBodyGyro-XYZ
+tBodyGyroJerk-XYZ
+tBodyAccMag
+tGravityAccMag
+tBodyAccJerkMag
+tBodyGyroMag
+tBodyGyroJerkMag
+fBodyAcc-XYZ
+fBodyAccJerk-XYZ
+fBodyGyro-XYZ
+fBodyAccMag
+fBodyAccJerkMag
+fBodyGyroMag
+fBodyGyroJerkMag
+The set of variables that were estimated from these signals are: 
+mean(): Mean value
+std(): Standard deviation)
+
 
