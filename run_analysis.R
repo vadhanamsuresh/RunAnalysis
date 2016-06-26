@@ -6,9 +6,9 @@
 ##From the data set above, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 ## Assumptions:
-## The following files activity_labels.txt, features.txt, subject_test.txt, subject_train.txt, X_test.txt, y_test.txt, X_train.txt, y_train.txt
-## are copied into the same folder where run_analysis.R is saved and executed
-## run_analysis.R depends on data.table, dplyr packages
+## Data source 'UCI HAR Dataset.zip' is downloaded and extracted to the same folder where run_analysis.R is saved and executed
+## The folder that contains run_analyis.R also contains as sub folder 'UCI HAR Dataset'
+## run_analysis.R depends on dplyr packages. This script install and loads dplyr package
 
 ## Install data.table, dplyr packages if needed
 if(!require('dplyr')) {
@@ -19,15 +19,15 @@ if(!require('dplyr')) {
 library(dplyr)
 
 ## Read activity labels
-actlabs <- read.table('activity_labels.txt')$V2
+actlabs <- read.table('./UCI HAR Dataset/activity_labels.txt')$V2
 
 ## Read features
-ftrs <- read.table('features.txt')$V2
+ftrs <- read.table('./UCI HAR Dataset/features.txt')$V2
 
 ## Read test data
-X_test <- read.table('X_test.txt')
-y_test <- read.table('y_test.txt')
-subject_test <- read.table('subject_test.txt')
+X_test <- read.table('./UCI HAR Dataset/test/X_test.txt')
+y_test <- read.table('./UCI HAR Dataset/test/y_test.txt')
+subject_test <- read.table('./UCI HAR Dataset/test/subject_test.txt')
 
 ## Assign col names for subject
 names(subject_test) <- 'subject'
@@ -46,9 +46,9 @@ X_test_meanstd <- X_test[,grepl('mean|std', ftrs)]
 testdata <- cbind(subject_test, y_test_descr, X_test_meanstd)
 
 ## Read train data
-X_train <- read.table('X_train.txt')
-y_train <- read.table('y_train.txt')
-subject_train <- read.table('subject_train.txt')
+X_train <- read.table('./UCI HAR Dataset/train/X_train.txt')
+y_train <- read.table('./UCI HAR Dataset/train/y_train.txt')
+subject_train <- read.table('./UCI HAR Dataset/train/subject_train.txt')
 
 ## Assign col names for subject
 names(subject_train) <- 'subject'
@@ -73,3 +73,4 @@ mergeddata <- rbind(testdata, traindata)
 ## Using dplyr summarize_each and group_by functions
 tidydata <- summarize_each(group_by(mergeddata, subject, actdescr), funs(mean))
 
+write.table(tidydata, file='tidydata.txt')
