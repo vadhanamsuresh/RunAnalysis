@@ -51,11 +51,11 @@ The following files are available for the train and test data. Their description
 Data Transformation
 ===========================
 * Read test data (X_test.txt, y_test.txt, subject_test.txt) files
-* Provide column names to X_test from features and y_test from activity_labels
+* Provide column names to X_test from features.txt and y_test from activity_labels.txt
 * Extract only columns from X_test that contain mean or std deviation readings into X_test_meanstd
 * Create a new test data frame with subject, activity and X_test mean/std data
 * Read train data (X_train.txt, y_train.txt, subject_train.txt) files
-* Provide column names to X_train from features and y_train from activity_labels
+* Provide column names to X_train from features.txt and y_train from activity_labels.txt
 * Extract only columns from X_train that contain mean or std deviation readings into X_train_meanstd
 * Create a new train data frame with subject, activity and X_train mean/std data
 * Merge test and train data frames
